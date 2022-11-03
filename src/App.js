@@ -1,12 +1,15 @@
 import logo from './logo.svg';
 import './App.css';
+import { useState } from 'react';
+import {motion} from 'framer-motion'
 
 function App() {
+  const [isVisible,setIsVisible] = useState(false)
   return (
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <p>
+        <p  onClick={()=>setIsVisible(!isVisible)}>
           Edit <code>src/App.js</code> and save to reload.
         </p>
         <a
@@ -15,7 +18,9 @@ function App() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Learn React
+          <motion.div animate={{opacity:isVisible? 0.5 : 1}}>
+            dasdas
+            </motion.div>
         </a>
       </header>
     </div>
