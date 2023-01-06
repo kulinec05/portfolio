@@ -7,11 +7,10 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 
 const steps = [
-  "Первое место",
-  "Второе место",
-  "Третье место",
-  "Четвертое место",
-  "Пятое место",
+  "Freelance",
+  "Dekart Media",
+  "CRON",
+  "SBER",
 ];
 
 export default function HorizontalLinearStepper({ activeStep, setActiveStep }) {
@@ -28,8 +27,8 @@ export default function HorizontalLinearStepper({ activeStep, setActiveStep }) {
   };
 
   return (
-    <Box sx={{ width: "50%" }}>
-      <Stepper activeStep={activeStep} orientation="vertical">
+    <Box sx={{ width: "100%" }}>
+      <Stepper activeStep={activeStep} alternativeLabel>
         {steps.map((label, index) => {
           const stepProps = {};
           const labelProps = {};
