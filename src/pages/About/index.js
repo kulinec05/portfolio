@@ -4,6 +4,7 @@ const About = () => {
     return (
         <div>
             dadasdadasdasdasdas
+            <h1>hello</h1>
         </div>
     );
 }
