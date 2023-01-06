@@ -1,11 +1,12 @@
 import React from 'react';
-import { Button, Menu } from 'antd';
-import { HomeOutlined, InfoCircleOutlined, MenuUnfoldOutlined } from '@ant-design/icons';
-import { useNavigate } from 'react-router-dom';
+import { Button, Col, Menu, Row } from 'antd';
+import { HomeOutlined, InfoCircleOutlined, MenuFoldOutlined, MenuUnfoldOutlined } from '@ant-design/icons';
+import { Outlet, useNavigate } from 'react-router-dom';
 
 
-const MainLayout = ({ children }) => {
-    const [collapsed, setCollapsed] = React.useState(false);
+const MainLayout = () => {
+    const [collapsed, setCollapsed] = React.useState(true);
+    const [selected, setSelected] = React.useState('home');
     const navigate = useNavigate()
 
     const toggleCollapsed = () => {
@@ -16,31 +17,34 @@ const MainLayout = ({ children }) => {
             toggleCollapsed()
         } else {
             navigate(key)
+            setSelected(key)
         }
     }
-    return (<>
+    return (<Row
+    >
 
-        <div style={{ width: 256, }}>
+        <Col  style={{ width: collapsed ? 80 : 256 }}>
             <Menu
                 style={{ height: '100vh' }}
-                defaultSelectedKeys={['1']}
-                defaultOpenKeys={['sub1']}
+                defaultOpenKeys={['home']}
                 mode="inline"
                 theme="dark"
+                selectedKeys={selected}
                 inlineCollapsed={collapsed}
                 onClick={MenuHandler}
+                selectable={false}
                 items={[
-                    { label: 'PROFILE', key: '', title: 'PROFILE', icon: <MenuUnfoldOutlined /> },
+                    { label: 'PROFILE', key: '', icon: collapsed ? <MenuFoldOutlined /> : <MenuUnfoldOutlined /> },
                     { label: 'Home', key: 'home', title: 'Home', icon: <HomeOutlined /> },
                     { label: 'About', key: 'about', title: 'About', icon: <InfoCircleOutlined /> },
                     { label: 'Projects', key: 'projects', title: 'Projects', icon: <HomeOutlined /> }
                 ]}
             />
-        </div>
-        <div>
-            {children}
-        </div>
-    </>
+        </Col>
+        <Col offset={0.5}>
+            <Outlet />
+        </Col>
+    </Row>
     );
 }
 
