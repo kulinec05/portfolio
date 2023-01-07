@@ -1,11 +1,13 @@
-import React from 'react';
+import React from "react";
+import { motion } from "framer-motion";
+import HomeExitANimation from "../../components/HomeExitANimation";
 
 const About = () => {
-    return (
-        <div>
-            dadasdadasdasdasdas
-        </div>
-    );
-}
+  return (
+    <>
+      <HomeExitANimation />
+    </>
+  );
+};
 
 export default About;
