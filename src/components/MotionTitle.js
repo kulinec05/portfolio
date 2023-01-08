@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 
-const MotionTitle = ({ initial, hovered, first, link }) => {
+const MotionTitle = ({ initial, hovered, order, link }) => {
   const [hover, sethover] = useState(false);
   const navigate = useNavigate();
   return (
@@ -11,8 +11,11 @@ const MotionTitle = ({ initial, hovered, first, link }) => {
         opacity: 1,
         marginLeft: "100px",
         fontSize: "10vw",
-        color: first && "red",
+        color: order === 0 && "red",
       }}
+      initial={{ x: "-100vw" }}
+      transition={{ x: { delay: order * 0.3 } }}
+      animate={{ x: 0 }}
       onHoverStart={() => sethover(true)}
       onHoverEnd={() => sethover(false)}
       exit={{ opacity: 0 }}

@@ -4,6 +4,24 @@ import { NavLink } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
 import MotionTitle from "../components/MotionTitle";
 
+const Pages = [
+  {
+    initial: "Hello",
+    hovered: "Projects",
+    link: "/projects",
+  },
+  {
+    initial: "I'M",
+    hovered: "About",
+    link: "/about",
+  },
+  {
+    initial: "SHAMIL",
+    hovered: "Contacts",
+    link: "/contacts",
+  },
+];
+
 const Home = () => {
   return (
     <AnimatePresence>
@@ -27,14 +45,14 @@ const Home = () => {
           transition: { duration: 2 },
         }}
       >
-        <MotionTitle
-          initial={"HELLO"}
-          hovered={"Projects"}
-          link="/projects"
-          first={true}
-        />
-        <MotionTitle initial={"I'M"} hovered={"About"} link="/about" />
-        <MotionTitle initial={"SHAMIL"} hovered={"Contacts"} link="/contacts" />
+        {Pages.map((page, index) => (
+          <MotionTitle
+            initial={page.initial}
+            hovered={page.hovered}
+            link={page.link}
+            order={index}
+          />
+        ))}
       </motion.div>
     </AnimatePresence>
   );
