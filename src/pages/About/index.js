@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import HomeExitANimation from "../../components/HomeExitANimation";
 
 const About = () => {
+
   return (
     <>
       <HomeExitANimation />
@@ -22,5 +23,6 @@ const About = () => {
     </>
   );
 };
+
 
 export default About;
